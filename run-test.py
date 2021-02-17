@@ -80,7 +80,7 @@ def parseTest (path : str):
         try :
             logging.Logger.info ("Running test : " + path)
             cwd = os.path.dirname (path)
-            yamlContent = yaml.load (stream, Loader=yaml.FullLoader)
+            yamlContent = yaml.load (stream, Loader=yaml.SafeLoader)
             output = ""
             err = ""
             code = 0
@@ -181,7 +181,7 @@ def parsePlaybook (path : str):
         cwd = "." 
     with open (path) as stream :
         try :
-            yamlContent = yaml.load (stream, Loader=yaml.FullLoader)
+            yamlContent = yaml.load (stream, Loader=yaml.SafeLoader)
             if "tests" in yamlContent : 
                 for i in yamlContent["tests"] :
                     try: 
